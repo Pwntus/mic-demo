@@ -8,6 +8,7 @@ const CONFIG = {
   password: '',
   // The application endpoint
   app:      'startiot.mic.telenorconnexion.com',
+  // The MQTT topic, wildcards can be used
   topic:    'thing-update/ExpoInnovationCenter/#'
 }
 
@@ -31,7 +32,7 @@ api.init(CONFIG.app)
           accessKeyId:            api._AWS.config.credentials.accessKeyId,
           secretAccessKey:        api._AWS.config.credentials.secretAccessKey,
           sessionToken:           api._AWS.config.credentials.sessionToken,
-          endpointAddress:        api._manifest.IotEndpoint,
+          endpointAddress:        manifest.IotEndpoint,
           maximumReconnectTimeMs: 8000,
           protocol:               'wss' // Websockets
         })
