@@ -6,7 +6,42 @@ const CONFIG = {
   // Password of the Cognito user
   password: '',
   // The application endpoint
-  app:      ''
+  app:      'startiot.mic.telenorconnexion.com',
+  // Elasticsearch query
+  query: {
+    size: 100,
+    filter: {
+      bool: {
+        minimum_should_match: 1,
+        must: [
+          {
+            terms: {
+              thingName: ['00000217']
+            }
+          },
+          {
+            range: {
+              timestamp: {
+                gte: '2017-11-15T22:00:00.000Z',
+                lte: '2017-11-24T13:57:20.766Z'
+              }
+            }
+          }
+        ],
+        should: [{
+          exists: {
+            field: 'state.temperature'
+          }
+        }]
+      }
+    },
+    sort: {
+      timestamp: {
+        order: 'desc'
+      }
+    },
+    _source: ['state.temperature', 'timestamp']
+  }
 }
 
 // Instantiate a new Managed IoT Cloud API object
@@ -23,6 +58,13 @@ api.init(CONFIG.app)
     return api.login(CONFIG.username, CONFIG.password)
       .then(user => {
         console.log(user)
+        
+        // Invoke ObservationLambda FIND with a query payload
+        api.invoke('ObservationLambda', { action: 'FIND', query: CONFIG.query })
+        .then(res => {
+          console.log('Result: ', res)
+        })
+
       })
   })
   .catch(err => console.error(err))

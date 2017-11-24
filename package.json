@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "aws-iot-device-sdk": "^2.1.0",
+    "aws-mqtt-client": "0.0.5",
     "mic-sdk-js": "0.0.2"
   },
   "devDependencies": {},
