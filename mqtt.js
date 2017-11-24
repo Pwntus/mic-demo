@@ -16,6 +16,6 @@ device.on('connect', function() {
   device.subscribe('$aws/things/' + thingName + '/shadow/update');
 });
  
-device.on('message', function(topic, payload) {
-  console.log('Message: ', topic, payload.toString());
+device.on('message', function(topic, message) {
+  console.log('Message: ', topic, message.toString());
 });
