@@ -3,6 +3,12 @@ This repository contains some examples written in Node.js. An external [mic-sdk-
 
 You can find the MIC Cloud API documentation here: <https://docs.telenorconnexion.com/mic/cloud-api/>
 
+**How to run (requires Node.js and NPM installed)**
+```
+$ npm install
+$ node examples/elasticsearch.js
+```
+
 ## Example: Elasticsearch
 **File:** [examples/elasticsearch.js](examples/elasticsearch.js)
 
