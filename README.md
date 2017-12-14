@@ -1,5 +1,5 @@
 # MIC Example Code in Node.js
-This repository contains some examples written in Node.js. An external [mic-sdk-js](https://www.npmjs.com/package/mic-sdk-js) module is used to simplify the invokation of API functions.
+This repository contains some examples written in Node.js. An external [mic-sdk-js](https://www.npmjs.com/package/mic-sdk-js) module is used to simplify the invocation of API functions.
 
 You can find the MIC Cloud API documentation here: <https://docs.telenorconnexion.com/mic/cloud-api/>
 
