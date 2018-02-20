@@ -10,37 +10,41 @@ const CONFIG = {
   // Elasticsearch query
   query: {
     size: 100,
-    filter: {
+    query: {
       bool: {
-        minimum_should_match: 1,
-        must: [
-          {
-            terms: {
-              thingName: ['00000217']
-            }
-          },
-          {
-            range: {
-              timestamp: {
-                gte: '2017-11-15T22:00:00.000Z',
-                lte: '2017-11-24T13:57:20.766Z'
+        filter: {
+          bool: {
+            minimum_should_match: 1,
+            must: [
+              {
+                terms: {
+                  thingName: ['00000217']
+                }
+              },
+              {
+                range: {
+                  timestamp: {
+                    gte: '2017-11-15T22:00:00.000Z',
+                    lte: '2017-11-24T13:57:20.766Z'
+                  }
+                }
               }
-            }
+            ],
+            should: [{
+              exists: {
+                field: 'state.temperature'
+              }
+            }]
           }
-        ],
-        should: [{
-          exists: {
-            field: 'state.temperature'
+        },
+        sort: {
+          timestamp: {
+            order: 'desc'
           }
-        }]
+        },
+        _source: ['state.temperature', 'timestamp']
       }
-    },
-    sort: {
-      timestamp: {
-        order: 'desc'
-      }
-    },
-    _source: ['state.temperature', 'timestamp']
+    }
   }
 }
 
