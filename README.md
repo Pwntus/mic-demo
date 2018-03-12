@@ -20,6 +20,6 @@ Authenticates with Cognito and invokes the [Observation API FIND](https://docs.t
 Creates a MQTT client that is authenticated using certificate files. May only be used for listening to the Thing owning the certificates.
 
 ## Example: MQTT Client using Cognito tokens
-**File:** [examples/mqtt_certificates.js](examples/mqtt_certificates.js)
+**File:** [examples/mqtt_cognito.js](examples/mqtt_cognito.js)
 
 Creates a MQTT client that is authenticated with Cognito. May listen for all Things that the authenticated Cognito user has access to.
